@@ -9,4 +9,5 @@ public class Board
     public string Name { get; set; } = string.Empty;
 
     public List<Column> Columns { get; set; } = [];
+    public List<BoardMember> Members { get; set; } = [];
 }

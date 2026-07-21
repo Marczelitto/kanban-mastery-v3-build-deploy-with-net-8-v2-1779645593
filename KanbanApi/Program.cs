@@ -1,5 +1,7 @@
 using KanbanApi.Data;
+using KanbanApi.Endpoints;
 using KanbanApi.Models;
+using KanbanApi.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +19,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddIdentityApiEndpoints<ApplicationUser>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
+builder.Services.AddScoped<IBoardService, BoardService>();
+
 var app = builder.Build();
 
 // Swagger UI
@@ -30,5 +34,7 @@ app.UseHttpsRedirection();
 
 // Endpointy Identity
 app.MapIdentityApi<ApplicationUser>();
+
+app.MapBoardEndpoints();
 
 app.Run();

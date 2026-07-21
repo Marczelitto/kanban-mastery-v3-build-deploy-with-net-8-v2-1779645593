@@ -1,2 +1,9 @@
 bin/
 obj/
+.vs/
+
+kanban.db
+
+.env
+
+appsettings.Development.json
